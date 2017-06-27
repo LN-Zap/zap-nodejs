@@ -16,7 +16,7 @@ export default ({ config, db }) => resource({
 	},
 
 	/** GET / - List all entities */
-	index({ params }, res) {
+	index(lnd, { params }, res) {
 		res.json(facets);
 	},
 
