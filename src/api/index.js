@@ -1,6 +1,5 @@
 import { version } from '../../package.json'
 import { Router } from 'express'
-import facets from './facets'
 import {
 	network,
 	info,
@@ -10,7 +9,8 @@ import {
 	payments,
 	invoices,
 	wallet_balance,
-	channel_balance
+	channel_balance,
+	peer
 } from './lnd'
 
 export default ({ config, db, lnd }) => {
@@ -25,9 +25,8 @@ export default ({ config, db, lnd }) => {
 	api.get('/invoices', invoices({ lnd }))
 	api.get('/wallet_balance', wallet_balance({ lnd }))
 	api.get('/channel_balance', channel_balance({ lnd }))
-
-	// mount the facets resource
-	// api.use('/facets', facets({ config, db }))
+	
+	api.post('/peer', peer({ lnd }))
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
