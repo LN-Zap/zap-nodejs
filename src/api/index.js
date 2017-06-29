@@ -10,7 +10,8 @@ import {
 	invoices,
 	wallet_balance,
 	channel_balance,
-	peer
+	connect,
+	disconnect
 } from './lnd'
 
 export default ({ config, db, lnd }) => {
@@ -26,7 +27,8 @@ export default ({ config, db, lnd }) => {
 	api.get('/wallet_balance', wallet_balance({ lnd }))
 	api.get('/channel_balance', channel_balance({ lnd }))
 	
-	api.post('/peer', peer({ lnd }))
+	api.post('/connect', connect({ lnd }))
+	api.post('/disconnect', disconnect({ lnd }))
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {

@@ -7,7 +7,8 @@ import payments from './payments'
 import invoices from './invoices'
 import wallet_balance from './wallet_balance'
 import channel_balance from './channel_balance'
-import peer from './peer'
+import connect from './connect'
+import disconnect from './disconnect'
 
 export { 
 	network,
@@ -19,5 +20,6 @@ export {
 	invoices,
 	wallet_balance,
 	channel_balance,
-	peer
+	connect,
+	disconnect
 }
