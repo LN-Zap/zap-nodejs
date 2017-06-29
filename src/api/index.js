@@ -11,7 +11,9 @@ import {
 	wallet_balance,
 	channel_balance,
 	connect,
-	disconnect
+	disconnect,
+	addinvoice,
+	sendpayment
 } from './lnd'
 
 export default ({ config, db, lnd }) => {
@@ -29,6 +31,8 @@ export default ({ config, db, lnd }) => {
 	
 	api.post('/connect', connect({ lnd }))
 	api.post('/disconnect', disconnect({ lnd }))
+	api.post('/addinvoice', addinvoice({ lnd }))
+	api.post('/sendpayment', sendpayment({ lnd }))
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {

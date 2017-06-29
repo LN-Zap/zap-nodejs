@@ -9,6 +9,8 @@ import wallet_balance from './wallet_balance'
 import channel_balance from './channel_balance'
 import connect from './connect'
 import disconnect from './disconnect'
+import addinvoice from './addinvoice'
+import sendpayment from './sendpayment'
 
 export { 
 	network,
@@ -21,5 +23,7 @@ export {
 	wallet_balance,
 	channel_balance,
 	connect,
-	disconnect
+	disconnect,
+	addinvoice,
+	sendpayment
 }
