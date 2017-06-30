@@ -11,6 +11,8 @@ import connect from './connect'
 import disconnect from './disconnect'
 import addinvoice from './addinvoice'
 import sendpayment from './sendpayment'
+import decodepayreq from './decodepayreq'
+import queryroute from './queryroute'
 
 export { 
 	network,
@@ -25,5 +27,7 @@ export {
 	connect,
 	disconnect,
 	addinvoice,
-	sendpayment
+	sendpayment,
+	decodepayreq,
+	queryroute
 }
