@@ -4,7 +4,7 @@ export default ({ lnd }) => (
 		const payload = { msg: Buffer.from(req.body.msg, "utf8"), signature }
 
 		return lnd.verifyMessage(payload, (err, data) => {
-			if (err) return res.sendStatus(500)
+			if (err) return res.status(500).send(err)
 			
 			return res.json({ data })
 		})

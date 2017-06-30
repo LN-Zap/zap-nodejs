@@ -4,7 +4,7 @@ export default ({ lnd }) => (
 		const payload = { memo, value }
 
 		return lnd.addInvoice(payload, (err, data) => {
-			if (err) return res.sendStatus(500)
+			if (err) return res.status(500).send(err)
 			
 			return res.json({ data })
 		})

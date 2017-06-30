@@ -2,10 +2,8 @@ export default ({ lnd }) => (
 	(req, res) => {
 		const payload = { pub_key: req.body.pubkey }
 
-		console.log('payload: ', payload)
-
 		return lnd.disconnectPeer(payload, (err, data) => {
-			if (err) return res.sendStatus(500)
+			if (err) return res.status(500).send(err)
 			
 			return res.json({ data })
 		})

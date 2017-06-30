@@ -4,7 +4,7 @@ export default ({ lnd }) => (
 		const payload = { addr: { pubkey, host }, perm: true }
 
 		return lnd.connectPeer(payload, (err, data) => {
-			if (err) return res.sendStatus(500)
+			if (err) return res.status(500).send(err)
 			
 			return res.json({ data })
 		})

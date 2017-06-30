@@ -4,7 +4,7 @@ export default ({ lnd }) => (
 		const payload = { pub_key, amt }
 
 		return lnd.queryRoutes(payload, (err, data) => {
-			if (err) return res.sendStatus(500)
+			if (err) return res.status(500).send(err)
 			
 			return res.json({ data })
 		})
