@@ -9,7 +9,7 @@
     "start": "node dist",
     "prestart": "npm run -s build",
     "lint": "eslint src",
-    "test": "mocha --compilers js:babel-core/register ./tests/test.js"
+    "test": "mocha --compilers js:babel-core/register ./tests/index.js"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
