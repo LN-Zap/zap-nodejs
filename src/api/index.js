@@ -15,7 +15,8 @@ import {
 	addinvoice,
 	sendpayment,
 	decodepayreq,
-	queryroute
+	queryroute,
+	newaddress
 } from './lnd'
 
 export default ({ config, db, lnd }) => {
@@ -37,6 +38,7 @@ export default ({ config, db, lnd }) => {
 	api.post('/sendpayment', sendpayment({ lnd }))
 	api.post('/decodepayreq', decodepayreq({ lnd }))
 	api.post('/queryroute', queryroute({ lnd }))
+	api.post('/newaddress', newaddress({ lnd }))
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {

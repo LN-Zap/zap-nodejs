@@ -13,6 +13,7 @@ import addinvoice from './addinvoice'
 import sendpayment from './sendpayment'
 import decodepayreq from './decodepayreq'
 import queryroute from './queryroute'
+import newaddress from './newaddress'
 
 export { 
 	network,
@@ -29,5 +30,6 @@ export {
 	addinvoice,
 	sendpayment,
 	decodepayreq,
-	queryroute
+	queryroute,
+	newaddress
 }
