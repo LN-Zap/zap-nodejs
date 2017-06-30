@@ -31,10 +31,10 @@ app.use(bodyParser.json({
 initializeDb( db => {
 
 	// internal middleware
-	app.use(middleware({ config, db }))
+	app.use(middleware())
 
 	// api router
-	app.use('/api', api({ config, db, lnd }))
+	app.use('/api', api({ lnd }))
 
 	app.server.listen(process.env.PORT || config.port, () => {
 		console.log(`Started on port ${app.server.address().port}`)

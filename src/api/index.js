@@ -20,7 +20,7 @@ import {
 	verifymessage
 } from './lnd'
 
-export default ({ config, db, lnd }) => {
+export default ({ lnd }) => {
 	let api = Router()
 
 	api.get('/network', network({ lnd }))
