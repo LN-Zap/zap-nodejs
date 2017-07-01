@@ -17,7 +17,8 @@ import {
 	decodepayreq,
 	queryroute,
 	newaddress,
-	verifymessage
+	verifymessage,
+	invoice
 } from './lnd'
 
 export default ({ lnd }) => {
@@ -32,6 +33,7 @@ export default ({ lnd }) => {
 	api.get('/invoices', invoices({ lnd }))
 	api.get('/wallet_balance', wallet_balance({ lnd }))
 	api.get('/channel_balance', channel_balance({ lnd }))
+	api.get('/invoice/:rhash', invoice({ lnd }))
 	
 	api.post('/connect', connect({ lnd }))
 	api.post('/disconnect', disconnect({ lnd }))

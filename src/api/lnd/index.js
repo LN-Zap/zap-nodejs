@@ -15,6 +15,7 @@ import decodepayreq from './decodepayreq'
 import queryroute from './queryroute'
 import newaddress from './newaddress'
 import verifymessage from './verifymessage'
+import invoice from './invoice'
 
 export { 
 	network,
@@ -33,5 +34,6 @@ export {
 	decodepayreq,
 	queryroute,
 	newaddress,
-	verifymessage
+	verifymessage,
+	invoice
 }

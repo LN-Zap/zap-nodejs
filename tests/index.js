@@ -93,4 +93,14 @@ describe('API tests', () => {
         done()
       })
   })
+
+  it('should return a specific invoice', (done) => {
+    request(app)
+      .get('/api/invoice/87690c44a99a1a6961b72dcd936550edbf160bc0aac73e3f43b9fb0dc1613e7b')
+      .end((err, res) => {
+        expect(res.body.data).to.be.ok
+        expect(res.statusCode).to.be.equal(200)
+        done()
+      })
+  })
 })
