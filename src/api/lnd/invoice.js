@@ -3,7 +3,8 @@ export default ({ lnd }) => (
 		lnd.lookupInvoice({ r_hash_str: req.params.rhash }, (err, data) => {
 			if (err) return res.status(500).send(err)
 			
-			return res.json({ data })
+  		const result = Object.assign(data, { r_hash: new Buffer(data.r_hash,'hex').toString('hex') })
+			return res.json({ data: result })
 		})
 	)
 )
