@@ -6,7 +6,9 @@ export default ({ lnd }) => (
 		return lnd.addInvoice(payload, (err, data) => {
 			if (err) return res.status(500).send(err)
 			
-			return res.json({ data })
+			const result = Object.assign(data, { r_hash: new Buffer(data.r_hash,'hex').toString('hex') })
+			console.log('result: ', result)
+			return res.json({ data: result })
 		})
 	}
 )
