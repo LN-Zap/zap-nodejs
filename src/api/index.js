@@ -44,7 +44,6 @@ export default ({ lnd }) => {
 	api.post('/newaddress', newaddress({ lnd }))
 	api.post('/verifymessage', verifymessage({ lnd }))
 
-	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
 		res.json({ version })
 	})

@@ -7,7 +7,6 @@ export default ({ lnd }) => (
 			if (err) return res.status(500).send(err)
 			
 			const result = Object.assign(data, { r_hash: new Buffer(data.r_hash,'hex').toString('hex') })
-			console.log('result: ', result)
 			return res.json({ data: result })
 		})
 	}
