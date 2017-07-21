@@ -1,4 +1,6 @@
-export default ({ lnd }) => (
+import sockets from '../../sockets'
+
+export default ({ lnd, wss }) => (
 	(req, res) => (
 		lnd.listPayments({}, (err, data) => {
 			if (err) return res.status(500).send(err)

@@ -21,7 +21,7 @@ import {
 	invoice
 } from './lnd'
 
-export default ({ lnd }) => {
+export default ({ lnd, wss }) => {
 	let api = Router()
 
 	api.get('/network', network({ lnd }))
@@ -29,7 +29,7 @@ export default ({ lnd }) => {
 	api.get('/peers', peers({ lnd }))
 	api.get('/channels', channels({ lnd }))
 	api.get('/pending_channels', pending_channels({ lnd }))
-	api.get('/payments', payments({ lnd }))
+	api.get('/payments', payments({ lnd, wss }))
 	api.get('/invoices', invoices({ lnd }))
 	api.get('/wallet_balance', wallet_balance({ lnd }))
 	api.get('/channel_balance', channel_balance({ lnd }))

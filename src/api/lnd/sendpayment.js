@@ -1,3 +1,5 @@
+import sockets from '../../sockets'
+
 export default ({ lnd }) => (
 	(req, res) => {
 		console.log(req.body)
@@ -7,6 +9,9 @@ export default ({ lnd }) => (
 			console.log('err: ', err)
 			if (err) return res.status(500).send(err)
 			console.log('data: ', data)
+
+			console.log('clients: ', wss.clients)
+			sockets.broadcast(wss.clients, data)
 			return res.json({ data })
 		})
 	}
