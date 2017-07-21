@@ -5,6 +5,7 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import ws from 'ws'
 import url from 'url'
+import subscribeToInvoices from './push/invoices'
 import lightning from './lib/lightning'
 import initializeDb from './db'
 import middleware from './middleware'
@@ -40,6 +41,9 @@ initializeDb( db => {
 	// api router
 	app.use('/api', api({ lnd, wss }))
 
+
+	subscribeToInvoices(lnd, wss)
+	
 	wss.on('connection', (ws, req) => {
 	  const location = url.parse(req.url, true)
 
