@@ -1,6 +1,6 @@
 import sockets from '../../sockets'
 
-export default ({ lnd }) => (
+export default ({ lnd, wss }) => (
 	(req, res) => {
 		console.log(req.body)
 		const payload = { payment_request: req.body.payment_request }
@@ -12,6 +12,7 @@ export default ({ lnd }) => (
 
 			console.log('clients: ', wss.clients)
 			sockets.broadcast(wss.clients, data)
+
 			return res.json({ data })
 		})
 	}
