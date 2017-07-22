@@ -4,6 +4,8 @@ export default ({ lnd, wss }) => (
 	(req, res) => {
 		console.log(req.body)
 		const payload = { payment_request: req.body.payment_request }
+
+		console.log('payload: ', payload)
 		
 		return lnd.sendPaymentSync(payload, (err, data) => {
 			console.log('err: ', err)

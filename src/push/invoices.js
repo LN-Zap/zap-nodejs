@@ -5,7 +5,7 @@ export default function(lnd, wss) {
   const subscribeToInvoices = lnd.subscribeInvoices({})
 
   subscribeToInvoices.on('data', tx => {
-    console.log('on data tx: ', tx)
+    console.log('hey!')
     return sockets.broadcast(wss.clients, tx)
   })
 
