@@ -18,7 +18,8 @@ import {
 	queryroute,
 	newaddress,
 	verifymessage,
-	invoice
+	invoice,
+	addchannel
 } from './lnd'
 
 export default ({ lnd, wss }) => {
@@ -43,6 +44,7 @@ export default ({ lnd, wss }) => {
 	api.post('/queryroute', queryroute({ lnd }))
 	api.post('/newaddress', newaddress({ lnd }))
 	api.post('/verifymessage', verifymessage({ lnd }))
+	api.post('/addchannel', addchannel({ lnd }))
 
 	api.get('/', (req, res) => {
 		res.json({ version })

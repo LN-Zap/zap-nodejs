@@ -16,6 +16,7 @@ import queryroute from './queryroute'
 import newaddress from './newaddress'
 import verifymessage from './verifymessage'
 import invoice from './invoice'
+import addchannel from './addchannel'
 
 export { 
 	network,
@@ -35,5 +36,6 @@ export {
 	queryroute,
 	newaddress,
 	verifymessage,
-	invoice
+	invoice,
+	addchannel
 }
