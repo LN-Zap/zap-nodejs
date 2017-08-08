@@ -45,9 +45,10 @@ initializeDb( db => {
 	subscribeToInvoices(lnd, wss)
 	
 	wss.on('connection', (ws, req) => {
-	  const location = url.parse(req.url, true)
+		console.log('Connection established')
+		ws.send('something')
 
-	  console.log('location: ', location)
+	  const location = url.parse(req.url, true)
 	  ws.on('message', message => { console.log('received: ', message) })
 	})
 

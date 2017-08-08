@@ -1,7 +1,13 @@
+const fs = require("fs")
 const grpc = require('grpc')
 
-module.exports = (path, host) => {
+module.exports = (path, host, cert) => {
+	process.env["GRPC_SSL_CIPHER_SUITES"] = "HIGH+ECDSA";
+
   const rpc = grpc.load(path)
 
-  return new rpc.lnrpc.Lightning(host, grpc.credentials.createInsecure())
+  const lndCert = fs.readFileSync('/Users/jmow/Library/Application Support/Lnd/tls.cert')
+	const credentials = grpc.credentials.createSsl(lndCert)
+
+  return new rpc.lnrpc.Lightning(host, credentials)
 }
