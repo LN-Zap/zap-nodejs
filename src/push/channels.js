@@ -1,15 +1,36 @@
 import sockets from '../sockets'
 
-export default function(lnd, wss) {
-  // const subscribeToInvoices = lnd.subscribeInvoices({})
+const DATA = 'CHANNEL_DATA'
+const END = 'CHANNEL_END'
+const ERROR = 'CHANNEL_ERROR'
+const STATUS = 'CHANNEL_STATUS'
 
-  // subscribeToInvoices.on('data', tx => sockets.broadcast(wss.clients, tx))
-
-  // subscribeToInvoices.on('end', () => { console.log("SUB INV END") })
-
-  // subscribeToInvoices.on('status', status => {
-  //   console.log('INV STATUS', status)
-  // })
-
-  // subscribeToInvoices.on('error', err => { console.log('INV ERROR', err) })
+export default function(lnd, wss, payload, callback) {
+  try {
+		const call = lnd.openChannel(payload)
+		
+		call.on('data', function (data) {
+			console.log('data: ', data)
+			sockets.broadcast(wss.clients, { event: DATA, data })
+		})
+		
+		call.on('end', function () {
+			console.log('end')
+			sockets.broadcast(wss.clients, { event: END })
+		})
+		
+		call.on('error', function (err) {
+			console.log('err: ', err)
+			sockets.broadcast(wss.clients, { event: ERROR, data: err })
+		})
+		
+		call.on('status', function (status) {
+			console.log('status: ', status)
+			sockets.broadcast(wss.clients, { event: STATUS, data: status })
+		})
+		
+		callback(null, payload)
+	} catch (error) {
+		callback(error, null)
+	}
 }

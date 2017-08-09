@@ -46,9 +46,7 @@ initializeDb( db => {
 	
 	wss.on('connection', (ws, req) => {
 		console.log('Connection established')
-		ws.send('something')
 
-	  const location = url.parse(req.url, true)
 	  ws.on('message', message => { console.log('received: ', message) })
 	})
 

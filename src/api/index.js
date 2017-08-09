@@ -34,7 +34,7 @@ export default ({ lnd, wss }) => {
 	api.get('/invoices', invoices({ lnd }))
 	api.get('/wallet_balance', wallet_balance({ lnd }))
 	api.get('/channel_balance', channel_balance({ lnd }))
-	api.get('/invoice/:rhash', invoice({ lnd }))
+	api.get('/invoice/:payreq', invoice({ lnd }))
 	
 	api.post('/connect', connect({ lnd }))
 	api.post('/disconnect', disconnect({ lnd }))
@@ -44,7 +44,7 @@ export default ({ lnd, wss }) => {
 	api.post('/queryroute', queryroute({ lnd }))
 	api.post('/newaddress', newaddress({ lnd }))
 	api.post('/verifymessage', verifymessage({ lnd }))
-	api.post('/addchannel', addchannel({ lnd }))
+	api.post('/addchannel', addchannel({ lnd, wss }))
 
 	api.get('/', (req, res) => {
 		res.json({ version })
