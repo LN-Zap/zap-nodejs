@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
 export default () => {
-	let routes = Router();
+	let routes = Router()
 
 	// add middleware here
 
-	return routes;
+	return routes
 }

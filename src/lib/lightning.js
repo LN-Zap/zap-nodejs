@@ -2,7 +2,7 @@ const fs = require("fs")
 const grpc = require('grpc')
 
 module.exports = (path, host, cert) => {
-	process.env["GRPC_SSL_CIPHER_SUITES"] = "HIGH+ECDSA";
+	process.env["GRPC_SSL_CIPHER_SUITES"] = "HIGH+ECDSA"
 
   const rpc = grpc.load(path)
 

@@ -16,11 +16,25 @@ export default ({ lnd }) => (
 		const paymentHashBuffer = buffer.slice(33, 65)
 		const paymentHashHex = paymentHashBuffer.toString("hex")
 
-		lnd.lookupInvoice({ r_hash_str: paymentHashHex }, (err, data) => {
-			if (err) return res.status(500).send(err)
-			
-  		const result = Object.assign(data, { r_hash: new Buffer(data.r_hash,'hex').toString('hex') })
-			return res.json({ data: result })
-		})
+		const valueBuffer = buffer.slice(65, 73)
+
+		const amount = convertBigEndianBufferToLong(valueBuffer)
+
+		const data = {
+			payreq,
+			amount,
+			r_hash: paymentHashHex,
+		}
+
+		return res.json({ data })
 	}
 )
+
+const convertBigEndianBufferToLong = (longBuffer) => {
+	let longValue = 0
+	const byteArray = Buffer.from(longBuffer).swap64()
+	for (let i = byteArray.length - 1; i >= 0; i--) {
+		longValue = (longValue * 256) + byteArray[i]
+	}
+	return longValue
+}

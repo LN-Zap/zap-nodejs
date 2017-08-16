@@ -12,8 +12,6 @@ export default ({ lnd, wss }) => (
 		}
 
 		channels(lnd, wss, payload, (err, data) => {
-			console.log('data callback: ', data)
-			console.log('err callback: ', err)
 			if (err) { return res.status(500).send(err) }
 
 			return res.json({ data })

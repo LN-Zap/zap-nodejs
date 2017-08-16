@@ -45,7 +45,7 @@ initializeDb( db => {
 	subscribeToInvoices(lnd, wss)
 	
 	wss.on('connection', (ws, req) => {
-		console.log('Connection established')
+		console.log('Websocket connection established')
 
 	  ws.on('message', message => { console.log('received: ', message) })
 	})
