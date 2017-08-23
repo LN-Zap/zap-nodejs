@@ -1,3 +1,13 @@
+# DEPRECATED - See [Zap](https://github.com/LN-Zap/zap-desktop) instead
+
+---
+
+
+### This is an old version of zap-nodejs. This code is not used anymore, it has been replaced with ipcRenderer in zap-desktop
+
+
+---
+
 [Zap](https://zap.jackmallers.com) Node.js
 ==================================
 
